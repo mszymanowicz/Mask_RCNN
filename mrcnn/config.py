@@ -31,7 +31,7 @@ class Config(object):
     # handle 2 images of 1024x1024px.
     # Adjust based on your GPU memory and image sizes. Use the highest
     # number that your GPU can handle for best performance.
-    IMAGES_PER_GPU = 2
+    IMAGES_PER_GPU = 1  #2-default
 
     # Number of training steps per epoch
     # This doesn't need to match the size of the training set. Tensorboard
@@ -89,19 +89,16 @@ class Config(object):
     RPN_NMS_THRESHOLD = 0.7
 
     # How many anchors per image to use for RPN training
-    RPN_TRAIN_ANCHORS_PER_IMAGE = 256
-    
+    #RPN_TRAIN_ANCHORS_PER_IMAGE = 256
+    RPN_TRAIN_ANCHORS_PER_IMAGE = 512
+    #RPN_TRAIN_ANCHORS_PER_IMAGE = 2000
+
     # ROIs kept after tf.nn.top_k and before non-maximum suppression
     PRE_NMS_LIMIT = 6000
 
     # ROIs kept after non-maximum suppression (training and inference)
     POST_NMS_ROIS_TRAINING = 2000
     POST_NMS_ROIS_INFERENCE = 1000
-
-    # If enabled, resizes instance masks to a smaller size to reduce
-    # memory load. Recommended when using high-resolution images.
-    USE_MINI_MASK = True
-    MINI_MASK_SHAPE = (56, 56)  # (height, width) of the mini-mask
 
     # Input image resizing
     # Generally, use the "square" resizing mode for training and predicting
@@ -145,6 +142,8 @@ class Config(object):
     # ratio of 1:3. You can increase the number of proposals by adjusting
     # the RPN NMS threshold.
     TRAIN_ROIS_PER_IMAGE = 200
+    #TRAIN_ROIS_PER_IMAGE = 400
+    #TRAIN_ROIS_PER_IMAGE = 2000
 
     # Percent of positive ROIs used to train classifier/mask heads
     ROI_POSITIVE_RATIO = 0.33
@@ -159,6 +158,8 @@ class Config(object):
 
     # Maximum number of ground truth instances to use in one image
     MAX_GT_INSTANCES = 100
+    #MAX_GT_INSTANCES = 200
+    #MAX_GT_INSTANCES = 1000
 
     # Bounding box refinement standard deviation for RPN and final detections.
     RPN_BBOX_STD_DEV = np.array([0.1, 0.1, 0.2, 0.2])
@@ -166,6 +167,8 @@ class Config(object):
 
     # Max number of final detections
     DETECTION_MAX_INSTANCES = 100
+    #DETECTION_MAX_INSTANCES = 200
+    #DETECTION_MAX_INSTANCES = 1000
 
     # Minimum probability value to accept a detected instance
     # ROIs below this threshold are skipped
@@ -206,6 +209,17 @@ class Config(object):
     #     False: Freeze BN layers. Good when using a small batch size
     #     True: (don't use). Set layer in training mode even when predicting
     TRAIN_BN = False  # Defaulting to False since batch size is often small
+
+    #chng mat02
+    # Generate detection mask
+    # False: Ouput only bounding boxes like Faster-RCNN
+    # True: Generate mask like previously
+    GENERATE_MASKS = False
+
+    # If enabled, resizes instance masks to a smaller size to reduce
+    # memory load. Recommended when using high-resolution images.
+    USE_MINI_MASK = False
+    MINI_MASK_SHAPE = (56, 56)  # (height, width) of the mini-mask
 
     # Gradient norm clipping
     GRADIENT_CLIP_NORM = 5.0
