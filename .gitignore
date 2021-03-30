@@ -6,7 +6,7 @@ results/
 temp/
 test/
 test_videos/
-coco/
+./coco/
 old_git/
 
 # Byte-compiled / optimized / DLL files

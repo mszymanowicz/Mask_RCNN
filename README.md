@@ -4,6 +4,8 @@ Originally, this was an implementation of only [Mask R-CNN](https://arxiv.org/ab
 
 To give credit, where credit's due, congratulations for an outstanding work (especially fantastic .ipynb debuggers and easy-to-understand code) to the team of Matterport. My project is essentially a deep modification of your Mask R-CNN implementation. https://github.com/matterport/Mask_RCNN
 
+I also provide a detailed description of network and results of a few experiments in Polish. At the same time, it is my Bachelor's thesis, which got the highest marks.
+
 # Brief installation guide for Linux  
 For GPU users:  
 Example CUDA/CUDNN configuration:  
@@ -12,7 +14,7 @@ CUDNN 7.6.4
 Their versions need to be compatible with both tensorflow-gpu and keras versions. At least 6GB or more VRAM might be necessary to train the model.
 
 ```
-git clone https://github.com/szgtest/Mask_RCNN.git
+git clone https://github.com/mszymanowicz/Mask_RCNN.git
 ```
 Create and activate python3.6 virtual environment, then:
 ```
